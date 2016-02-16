@@ -1,0 +1,63 @@
+{
+  "name": "scaffold",
+  "version": "1.0.0",
+  "description": "Simple starting scaffold for my repos. Fork it to start. Use 'npm update --save' and 'npm update --save-dev' to update the versions and after a while use 'npm prune' to remove unused dependencies.",
+  "main": "src/start.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kilkelly/scaffold.git"
+  },
+  "author": "Frank Kilkelly",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kilkelly/scaffold/issues"
+  },
+  "homepage": "https://github.com/kilkelly/scaffold#readme",
+  "dependencies": {
+    "axios": "*",
+    "detect-node": "*",
+    "express": "*",
+    "history": "*",
+    "immutable": "*",
+    "moment": "*",
+    "react": "*",
+    "react-addons-pure-render-mixin": "*",
+    "react-dom": "*",
+    "react-redux": "*",
+    "react-router": "*",
+    "redux": "*",
+    "redux-immutable": "*",
+    "redux-thunk": "*",
+    "validator": "*"
+  },
+  "devDependencies": {
+    "babel-core": "*",
+    "babel-loader": "*",
+    "babel-plugin-react-transform": "*",
+    "babel-preset-es2015": "*",
+    "babel-preset-react": "*",
+    "babel-preset-react-hmre": "*",
+    "babel-register": "*",
+    "css-loader": "*",
+    "node-sass": "*",
+    "redux-devtools": "*",
+    "redux-devtools-dock-monitor": "*",
+    "redux-devtools-log-monitor": "*",
+    "redux-logger": "*",
+    "rimraf": "*",
+    "sass-loader": "*",
+    "style-loader": "*",
+    "webpack": "*",
+    "webpack-dev-middleware": "*",
+    "webpack-hot-middleware": "*"
+  },
+  "babel": {
+    "presets": [
+      "react",
+      "es2015"
+    ]
+  }
+}

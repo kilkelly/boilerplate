@@ -3,12 +3,14 @@ var webpack = require("webpack");
 
 module.exports = {
 	entry: [
-		"./src/client"
+		"webpack-hot-middleware/client",
+		"./src/client/renderApp"		
 	],
 	output: {
 		path: path.join(__dirname, "dist"),
-		filename: "bundle.js",
-		publicPath: '/'
+	    filename: '[name].js',
+	    chunkFilename: '[id].js',
+	    publicPath: '/dist/',
 	},
 	resolve: {
 		modulesDirectories: ["node_modules"],
@@ -19,7 +21,10 @@ module.exports = {
 			{
 				test: /\.jsx?$/,
 				exclude: /node_modules/,
-				loaders: ["babel"]
+				loader: "babel",
+		        query: {
+		          presets: ['react-hmre']
+		        }				
 			},
 			{
 				test: /\.scss$/,
@@ -29,8 +34,11 @@ module.exports = {
 		]
 	},
 	plugins: [
+		new webpack.HotModuleReplacementPlugin(),
+		new webpack.NoErrorsPlugin(),
 		new webpack.DefinePlugin({
-			'process.env.NODE_ENV': JSON.stringify('production')
-		})
-	]
+			'process.env.NODE_ENV': JSON.stringify('development')
+		})						
+	],
+	devtool: 'cheap-module-eval-source-map',
 }

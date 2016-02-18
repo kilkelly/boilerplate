@@ -2,16 +2,20 @@ var path = require("path");
 var webpack = require("webpack");
 
 module.exports = {
-	entry: [
-		"webpack-hot-middleware/client",
-		"./src/client/renderApp"		
-	],
+	entry: {
+		main: [
+			"./src/client/renderApp",
+			"webpack-hot-middleware/client"		
+		]
+	},
 	output: {
 		path: path.join(__dirname, "dist"),
 	    filename: '[name].js',
-	    chunkFilename: '[id].js',
+	    chunkFilename: '[id].js',	    
 	    publicPath: '/dist/',
-	},
+	    library: '[name]',
+	    libraryTarget: 'umd'
+	},	
 	resolve: {
 		modulesDirectories: ["node_modules"],
 		extensions: ["", ".js"]

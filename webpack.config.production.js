@@ -2,14 +2,16 @@ var path = require("path");
 var webpack = require("webpack");
 
 module.exports = {
-	entry: [
-		"./src/client/renderApp"		
-	],
+	entry: {
+		main: ["./src/client/renderApp"]
+	},
 	output: {
 		path: path.join(__dirname, "dist"),
-	    filename: '[name].js',
-	    chunkFilename: '[id].js',
+	    filename: '[name].min.js',
+	    chunkFilename: '[id].min.js',	    
 	    publicPath: '/dist/',
+	    library: '[name]',
+	    libraryTarget: 'umd'	    
 	},
 	resolve: {
 		modulesDirectories: ["node_modules"],

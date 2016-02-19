@@ -5,8 +5,8 @@ import express  from "express"
 import { match, RouterContext } from "react-router"
 import { renderToString }  from "react-dom/server"
 import { Provider } from "react-redux"
-import { routes }  from "./shared/routes"
-import store from "./shared/store"
+import { routes }  from "../shared/routes"
+import store from "../shared/store"
 
 const port = 3000
 const app = express()	
@@ -14,7 +14,7 @@ const app = express()
 //********* HOT RELOADING ****************
 if (process.env.NODE_ENV === "development") {
 	const webpack = require("webpack")
-	const config = require("../webpack.config.development.js")
+	const config = require("../../webpack.config.development.js")
 	const devMiddleware = require("webpack-dev-middleware")
 	const hotMiddleware = require("webpack-hot-middleware")
 
@@ -33,7 +33,12 @@ if (process.env.NODE_ENV === "development") {
 }	
 //********* HOT RELOADING ****************
 
-app.use(express.static("static"))
+
+app.use("/dist", express.static('dist'));
+app.use("/static", express.static('static'));
+//		OR
+//app.use("/dist", express.static(__dirname + '/../../dist'));
+//app.use("/static", express.static(__dirname + '/../../static'));
 
 app.get("*", (req, res) => {		
 
@@ -61,8 +66,10 @@ app.get("*", (req, res) => {
 					</script>
 				</head>
 				<body>
-					<div id="root">${componentHtml}</div>
-					<script src="dist/main.js"></script>
+					<div id="root">${componentHtml}</div>				
+					<script src="/dist/manifest${process.env.MIN_EXT}.js"></script>
+					<script src="/dist/vendor${process.env.MIN_EXT}.js"></script>					
+					<script src="/dist/app${process.env.MIN_EXT}.js"></script>
 				</body>
 			</html>`
 
@@ -73,14 +80,6 @@ app.get("*", (req, res) => {
 	})
 
 })
-
-app.get("*", (req, res) => {		
-
-	res.status(200).send(
-		appContainer("<h1>Hello World</h1>")
-	)
-
-})	
 
 app.listen(port, "localhost", function(error) {
   if (error) {

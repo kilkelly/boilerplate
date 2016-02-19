@@ -1,10 +1,36 @@
 {
   "name": "scaffold",
   "version": "1.0.0",
-  "description": "Simple starting scaffold for my repos. Fork it to start. Use 'npm update --save' and 'npm update --save-dev' to update the versions and after a while use 'npm prune' to remove unused dependencies.",
-  "main": "src/start.js",
+  "description": "Simple starting scaffold for my repos. Fork it to start. Use 'npm update --save' and 'npm update --save-dev' to update the versions and after a while use 'npm prune' to remove unused dependencies. Make sure all dependency version numbers are * before updating.",
+  "main": "lib/start.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build:lib": "babel src --out-dir lib",
+    "build:umd": "webpack --config webpack.config.development.js",
+    "build:umd:min": "webpack --config webpack.config.production.js",
+    "build": "npm run build:lib && npm run build:umd && npm run build:umd:min",
+    "build": "npm run build:lib && npm run build:umd:min",
+    "clean": "rimraf lib dist",
+    "prepublish": "npm run clean && npm run build",
+    "server": "better-npm-run server",
+    "server:dev": "better-npm-run server:dev",
+    "start": "npm run build && npm run server",
+    "start:dev": "npm run server:dev"
+  },
+  "betterScripts": {
+    "server": {
+      "command": "node start.js",
+      "env": {
+        "NODE_ENV": "production",
+        "MIN_EXT": ".min"
+      }
+    },
+    "server:dev": {
+      "command": "node start.js",
+      "env": {
+        "NODE_ENV": "development",
+        "MIN_EXT": ""
+      }
+    }
   },
   "repository": {
     "type": "git",
@@ -19,7 +45,6 @@
   "dependencies": {
     "axios": "*",
     "detect-node": "*",
-    "express": "*",
     "history": "*",
     "immutable": "*",
     "moment": "*",
@@ -34,6 +59,7 @@
     "validator": "*"
   },
   "devDependencies": {
+    "babel-cli": "*",
     "babel-core": "*",
     "babel-loader": "*",
     "babel-plugin-react-transform": "*",
@@ -41,7 +67,9 @@
     "babel-preset-react": "*",
     "babel-preset-react-hmre": "*",
     "babel-register": "*",
+    "better-npm-run": "*",
     "css-loader": "*",
+    "express": "*",
     "node-sass": "*",
     "redux-devtools": "*",
     "redux-devtools-dock-monitor": "*",

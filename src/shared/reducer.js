@@ -6,7 +6,7 @@ import {
 	NEVER_CALLED,
 } from "./action_creators"
 
-const reducer = (	state = fromJS({ text: "Hello from Redux store" }),
+const reducer = (	state = fromJS({ text: "Hello from Redux store!" }),
 					action
 				) => {
 	switch(action.type) {

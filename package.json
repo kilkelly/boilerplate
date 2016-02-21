@@ -1,8 +1,8 @@
 {
-  "name": "scaffold",
+  "name": "boilerplate",
   "version": "1.0.0",
-  "description": "Simple starting scaffold for my repos. Fork it to start. Use 'npm update --save' and 'npm update --save-dev' to update the versions and after a while use 'npm prune' to remove unused dependencies. Make sure all dependency version numbers are * before updating.",
-  "main": "lib/start.js",
+  "description": "Starting boilerplate for most of my repos. To duplicate the repo: https://help.github.com/articles/duplicating-a-repository/ Use 'npm update --save' and 'npm update --save-dev' to update the versions and after a while use 'npm prune' to remove unused dependencies. Make sure all dependency version numbers are * before updating.",
+  "main": "start.js",
   "scripts": {
     "build:lib": "babel src --out-dir lib",
     "build:umd": "webpack --config webpack.config.development.js",

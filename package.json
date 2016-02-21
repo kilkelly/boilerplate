@@ -5,8 +5,8 @@
   "main": "start.js",
   "scripts": {
     "build:lib": "babel src --out-dir lib",
-    "build:umd": "webpack --config webpack.config.development.js",
-    "build:umd:min": "webpack --config webpack.config.production.js",
+    "build:umd": "webpack --progress --colors --debug --config webpack.config.development.js",
+    "build:umd:min": "webpack --progress --colors --debug --config webpack.config.production.js",
     "build": "npm run build:lib && npm run build:umd && npm run build:umd:min",
     "clean": "rimraf lib dist",
     "prepublish": "npm run clean && npm run build",

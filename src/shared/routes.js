@@ -1,6 +1,5 @@
 import React from "react"
-import { Router, Route, IndexRoute } from "react-router"
-import createBrowserHistory from "history/lib/createBrowserHistory"
+import { Router, Route, IndexRoute, browserHistory } from "react-router"
 import createMemoryHistory from "history/lib/createMemoryHistory"
 import isNode from "detect-node"
 import App from "./components/App"
@@ -9,7 +8,7 @@ import StoreTestContainer from "./components/StoreTestContainer"
 
 let history = isNode 
 					? createMemoryHistory()
-					: createBrowserHistory()
+					: browserHistory
 
 export const routes = 
 <Router history={history}>
